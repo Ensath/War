@@ -42,6 +42,19 @@ class Deck
     deal(){
         return this.deckorder.pop();
     }; 
+
+    // Divide the cards into the deck into a given number of stacks of equal size
+    split(numberOfStacks){
+        stacks = [];
+        for(let i = 0; i < numberOfStacks; i++){
+            stacks.push(new Deck());
+        }
+        while(this.deckorder.length >= numberOfStacks){
+            for(let i = 0; i < numberOfStacks; i++){
+                stacks[i].push(deal());
+            }
+        }
+    }
 } 
 
 class War 
