@@ -1,8 +1,8 @@
 // A class to represent a playing card. 
 class Card { 
-    constructor(rank){
-        // The suit is irrelevant to the gameplay, so we do not track that
+    constructor(rank, suit){
         this.rank = rank;
+        this.suit = suit;
     }
 } 
 
@@ -14,7 +14,7 @@ class Deck
     create(numberOfSuits,  numberOfRanks){
         for(let i = 1; i <= numberOfRanks; i++){
             for(let j = 0; j < numberOfSuits; j++){
-                this.deckorder.push(new Card(i));
+                this.deckorder.push(new Card(i, j));
             }
         }
     }; 
