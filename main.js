@@ -83,7 +83,9 @@ class War
                     continue;
                 }
                 // Have the player reveal a card
-                cardsOnTable.push(playerDecks[i].deal());
+                let revealedCard = playerDecks[i].deal();
+                cardsOnTable.push(revealedCard);
+                console.log("Player ", i, " reveals ", revealedCard.rank);
             }
         }
     } 
