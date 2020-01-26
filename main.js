@@ -68,16 +68,16 @@ class War
         wholeDeck.shuffle();
         let playerDecks = wholeDeck.splitIntoStacks(numberOfPlayers);
         let numberOfCardsInPlayerDecks = playerDecks[0].deckOrder.length * numberOfPlayers;
+        let cardsOnTable = new Deck();
 
         // Play the game until a player has all the cards
         while(true){
-            let cardsOnTable = new Deck();
             let cardsToCompare = [];
             let playersComparing = [];
             for(let i = 0; i < numberOfPlayers; i++){
                 // Check if the player has all the cards - if so, end the game and declare them the winner
                 if(playerDecks[i].deckOrder.length === numberOfCardsInPlayerDecks){
-                    console.log("Player ", i, " is the winner!");
+                    console.log("Player", i, "is the winner!");
                     return;
                 }
                 // Check if the player has run out of cards - if so, ignore them
@@ -89,7 +89,7 @@ class War
                 cardsOnTable.deckOrder.push(revealedCard);
                 cardsToCompare.push(revealedCard);
                 playersComparing.push(i);
-                console.log("Player ", i, " reveals ", revealedCard.rank);
+                console.log("Player", i, "reveals", revealedCard.rank);
             }
             // Find out if there is a single highest card
             let maxCardRank = 0;
@@ -116,8 +116,19 @@ class War
                 while(cardsOnTable.deckOrder.length > 0){
                     playerDecks[winningPlayer].unshift(cardsOnTable.deal());
                 }
+                console.log("Player", i, "takes the cards on the table")
             }
             // If not, have the players set aside a card, then reveal another card until there is a single highest card
+            else {
+                for(let i = 0; i < numberOfPlayers; i++){
+                    // Check if the player has run out of cards - if so, ignore them
+                    if(playerDecks[i].deckOrder.length === 0){
+                        continue;
+                    }
+                    let hiddenCard = playerDecks[i].deal();
+                    cardsOnTable.push(hiddenCard);
+                }
+            }
         }
     } 
 } 
