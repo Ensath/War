@@ -1,0 +1,22 @@
+{
+  "name": "war",
+  "version": "1.0.0",
+  "description": "A JavaScript application for playing the card game War",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ensath/War.git"
+  },
+  "author": "Noah Freed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ensath/War/issues"
+  },
+  "homepage": "https://github.com/Ensath/War#readme",
+  "devDependencies": {
+    "mocha": "^7.0.1"
+  }
+}
