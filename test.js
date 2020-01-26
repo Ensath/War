@@ -5,9 +5,16 @@ it('Basic logic test', () => {
   assert.equal(true, true);
 });
 
+// Initilize a standard 52 card deck
+main.standardDeck.create(4, 13);
+
 it('Deck size check', () => {
-    main.standardDeck.create(4, 13);
     assert.equal(main.standardDeck.deckOrder.length, 52);
+});
+
+it('Individual card presence check', () => {
+    assert.equal(main.standardDeck.deckOrder[0].getName(), "2 of Clubs");
+    assert.equal(main.standardDeck.deckOrder[51].getName(), "Ace of Spades");
 });
 
 it('Shuffle randomization check', () => {
