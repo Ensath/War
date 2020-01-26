@@ -71,7 +71,9 @@ class War
 
         // Play the game until a player has all the cards
         while(true){
-            let cardsOnTable = [];
+            let cardsOnTable = new Deck();
+            let cardsToCompare = [];
+            let playersComparing = [];
             for(let i = 0; i < numberOfPlayers; i++){
                 // Check if the player has all the cards - if so, end the game and declare them the winner
                 if(playerDecks[i].deckOrder.length === numberOfCardsInPlayerDecks){
@@ -84,9 +86,38 @@ class War
                 }
                 // Have the player reveal a card
                 let revealedCard = playerDecks[i].deal();
-                cardsOnTable.push(revealedCard);
+                cardsOnTable.deckOrder.push(revealedCard);
+                cardsToCompare.push(revealedCard);
+                playersComparing.push(i);
                 console.log("Player ", i, " reveals ", revealedCard.rank);
             }
+            // Find out if there is a single highest card
+            let maxCardRank = 0;
+            let winningPlayer = -1;
+            let singleWinner = false;
+            for (let i = 0; i < cardsToCompare.length; i++){
+                if(maxCardRank < cardsToCompare[i].rank){
+                    maxCardRank = cardsToCompare[i].rank;
+                }
+            }
+            for (let i = 0; i < cardsToCompare.length; i++){
+                if(maxCardRank === cardsToCompare[i].rank){
+                    if(winningPlayer === -1){
+                        winningPlayer = playersComparing[i];
+                        singleWinner = true;
+                    } else {
+                        singleWinner = false;
+                    }
+                }
+            }
+            // If so, give the cards on the table to the player who revealed that card, putting them on the bottom of the deck in a random order
+            if(singleWinner){
+                cardsOnTable.shuffle();
+                while(cardsOnTable.deckOrder.length > 0){
+                    playerDecks[winningPlayer].unshift(cardsOnTable.deal());
+                }
+            }
+            // If not, have the players set aside a card, then reveal another card until there is a single highest card
         }
     } 
 } 
