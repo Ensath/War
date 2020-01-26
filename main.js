@@ -53,7 +53,7 @@ class Deck
         }
         while(this.deckOrder.length >= numberOfStacks){
             for(let i = 0; i < numberOfStacks; i++){
-                stacks[i].push(this.deal());
+                stacks[i].deckOrder.push(this.deal());
             }
         }
         return stacks;
@@ -116,9 +116,9 @@ class War
             if(singleWinner){
                 cardsOnTable.shuffle();
                 while(cardsOnTable.deckOrder.length > 0){
-                    playerDecks[winningPlayer].unshift(cardsOnTable.deal());
+                    playerDecks[winningPlayer].deckOrder.unshift(cardsOnTable.deal());
                 }
-                console.log("Player", i, "takes the cards on the table")
+                console.log("Player", winningPlayer, "takes the cards on the table")
             }
             // If not, have the players set aside a card, then reveal another card until there is a single highest card
             else {
@@ -128,7 +128,7 @@ class War
                         continue;
                     }
                     let hiddenCard = playerDecks[i].deal();
-                    cardsOnTable.push(hiddenCard);
+                    cardsOnTable.deckOrder.push(hiddenCard);
                 }
             }
         }
