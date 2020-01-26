@@ -4,6 +4,46 @@ class Card {
         this.rank = rank;
         this.suit = suit;
     }
+
+    getName(){
+        let name = "";
+        switch(this.rank){
+            case 10:
+                name += "Jack";
+                break;
+            case 11:
+                name += "Queen";
+                break;
+            case 12:
+                name += "King";
+                break;
+            case 13:
+                name += "Ace";
+                break;
+            default:
+                name += this.rank + 1;
+                break;
+        }
+        name += " of "
+        switch(this.suit){
+            case 1:
+                name += "Clubs";
+                break;
+            case 2:
+                name += "Diamonds";
+                break;
+            case 3:
+                name += "Hearts";
+                break;
+            case 4:
+                name += "Spades";
+                break;
+            default: 
+                name += "suit " + this.suit;
+                break;
+        }
+        return name;
+    }
 } 
 
 class Deck 
@@ -15,7 +55,7 @@ class Deck
     /* Create the deck of cards */ 
     create(numberOfSuits,  numberOfRanks){
         for(let i = 1; i <= numberOfRanks; i++){
-            for(let j = 0; j < numberOfSuits; j++){
+            for(let j = 1; j <= numberOfSuits; j++){
                 this.deckOrder.push(new Card(i, j));
             }
         }
@@ -91,7 +131,7 @@ class War
                 cardsOnTable.deckOrder.push(revealedCard);
                 cardsToCompare.push(revealedCard);
                 playersComparing.push(i);
-                console.log("Player", i, "reveals", revealedCard.rank);
+                console.log("Player", i, "reveals the", revealedCard.getName());
             }
             // Find out if there is a single highest card
             let maxCardRank = 0;
