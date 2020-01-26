@@ -67,15 +67,23 @@ class War
         wholeDeck.create(numberOfSuits, numberOfRanks);
         wholeDeck.shuffle();
         let playerDecks = wholeDeck.splitIntoStacks(numberOfPlayers);
+        let numberOfCardsInPlayerDecks = playerDecks[0].deckorder.length * numberOfPlayers;
 
-        // Play the game until a player runs out of cards
+        // Play the game until a player has all the cards
         while(true){
-            // Check if anyone has run out of cards
+            let cardsOnTable = [];
             for(let i = 0; i < numberOfPlayers; i++){
-                if(playerDecks[i].length === 0){
-                    // If someone has, find out who wins
-                    
+                // Check if the player has all the cards - if so, end the game and declare them the winner
+                if(playerDecks[i].deckorder.length === numberOfCardsInPlayerDecks){
+                    console.log("Player ", i, " is the winner!");
+                    return;
                 }
+                // Check if the player has run out of cards - if so, ignore them
+                if(playerDecks[i].deckorder.length === 0){
+                    continue;
+                }
+                // Have the player reveal a card
+                cardsOnTable.push(playerDecks[i].deal());
             }
         }
     } 
