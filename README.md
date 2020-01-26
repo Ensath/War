@@ -1,10 +1,10 @@
 # The Game of War
 
-Running this application will produce the game of war. To run, make sure node.js is installed, then run the following command:
+Running this application will produce the game of war. To run, make sure Node.js is installed, then run the following command:
 
 node main.js
 
-To run unit tests, make sure npm is installed, then run the following command:
+To run unit tests, make sure npm (Node package manager) is installed, then run the following command:
 
 npm test
 
