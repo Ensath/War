@@ -8,7 +8,9 @@ class Card {
 
 class Deck 
 { 
-    deckOrder = [];
+    constructor(){
+        this.deckOrder = [];
+    }
 
     /* Create the deck of cards */ 
     create(numberOfSuits,  numberOfRanks){
@@ -22,7 +24,7 @@ class Deck
     /* Shuffle the deck */ 
     shuffle(){
         // Shuffle code from CoolAJ86's answer at https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        var currentIndex = deckOrder.length, temporaryValue, randomIndex;
+        var currentIndex = this.deckOrder.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -32,9 +34,9 @@ class Deck
           currentIndex -= 1;
       
           // And swap it with the current element.
-          temporaryValue = deckOrder[currentIndex];
-          deckOrder[currentIndex] = deckOrder[randomIndex];
-          deckOrder[randomIndex] = temporaryValue;
+          temporaryValue = this.deckOrder[currentIndex];
+          this.deckOrder[currentIndex] = this.deckOrder[randomIndex];
+          this.deckOrder[randomIndex] = temporaryValue;
         }
     }; 
 
@@ -45,13 +47,13 @@ class Deck
 
     // Divide the cards into the deck into a given number of stacks of equal size
     splitIntoStacks(numberOfStacks){
-        stacks = [];
+        let stacks = [];
         for(let i = 0; i < numberOfStacks; i++){
             stacks.push(new Deck());
         }
         while(this.deckOrder.length >= numberOfStacks){
             for(let i = 0; i < numberOfStacks; i++){
-                stacks[i].push(deal());
+                stacks[i].push(this.deal());
             }
         }
         return stacks;
@@ -132,3 +134,6 @@ class War
         }
     } 
 } 
+
+let game = new War();
+game.play(4, 13, 2);
