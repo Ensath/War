@@ -6,7 +6,16 @@ it('Basic logic test', () => {
 });
 
 it('Deck size check', () => {
+    main.standardDeck.create(4, 13);
     assert.equal(main.standardDeck.deckOrder.length, 52);
+});
+
+it('Shuffle randomization check', () => {
+    // Make a copy of the original order and compare with the post shuffle order
+    // Should fail to pass extremely infrequently (1 in 52! tests)
+    let order = main.standardDeck.deckOrder.slice();
+    main.standardDeck.shuffle();
+    assert.notEqual(main.standardDeck.deckOrder, order);
 });
 
 it('2 deck split size check', () => {

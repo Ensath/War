@@ -139,5 +139,4 @@ let game = new War();
 game.play(4, 13, 2);
 
 let standardDeck = new Deck();
-standardDeck.create(4, 13);
 module.exports = {standardDeck};
