@@ -44,7 +44,7 @@ class Deck
     }; 
 
     // Divide the cards into the deck into a given number of stacks of equal size
-    split(numberOfStacks){
+    splitIntoStacks(numberOfStacks){
         stacks = [];
         for(let i = 0; i < numberOfStacks; i++){
             stacks.push(new Deck());
@@ -54,6 +54,7 @@ class Deck
                 stacks[i].push(deal());
             }
         }
+        return stacks;
     }
 } 
 
@@ -61,6 +62,21 @@ class War
 { 
     play(numberOfSuits, numberOfRanks, numberOfPlayers) 
     { 
+        // Initialize the decks for each player
+        let wholeDeck = new Deck();
+        wholeDeck.create(numberOfSuits, numberOfRanks);
+        wholeDeck.shuffle();
+        let playerDecks = wholeDeck.splitIntoStacks(numberOfPlayers);
 
+        // Play the game until a player runs out of cards
+        while(true){
+            // Check if anyone has run out of cards
+            for(let i = 0; i < numberOfPlayers; i++){
+                if(playerDecks[i].length === 0){
+                    // If someone has, find out who wins
+                    
+                }
+            }
+        }
     } 
 } 
