@@ -137,3 +137,6 @@ class War
 
 let game = new War();
 game.play(4, 13, 2);
+
+let standardDeck = new Deck();
+module.exports = {standardDeck};
