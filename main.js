@@ -110,6 +110,10 @@ class War
         wholeDeck.shuffle();
         let playerDecks = wholeDeck.splitIntoStacks(numberOfPlayers);
         let numberOfCardsInPlayerDecks = playerDecks[0].deckOrder.length * numberOfPlayers;
+        if(numberOfCardsInPlayerDecks === 0){
+            console.log("Insufficient cards to begin play");
+            return;
+        }
         let cardsOnTable = new Deck();
 
         // Play the game until a player has all the cards
