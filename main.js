@@ -116,6 +116,7 @@ class War
         while(true){
             let cardsToCompare = [];
             let playersComparing = [];
+            let emptyDecks = 0;
             for(let i = 0; i < numberOfPlayers; i++){
                 // Check if the player has all the cards - if so, end the game and declare them the winner
                 if(playerDecks[i].deckOrder.length === numberOfCardsInPlayerDecks){
@@ -124,6 +125,11 @@ class War
                 }
                 // Check if the player has run out of cards - if so, ignore them
                 if(playerDecks[i].deckOrder.length === 0){
+                    emptyDecks++;
+                    if(emptyDecks === numberOfPlayers){
+                        console.log("All decks are empty, the game is a draw");
+                        return;
+                    }
                     continue;
                 }
                 // Have the player reveal a card
@@ -169,8 +175,8 @@ class War
                     }
                     let hiddenCard = playerDecks[i].deal();
                     cardsOnTable.deckOrder.push(hiddenCard);
+                    console.log("Player", i, "puts a card facedown on the table");
                 }
-                console.log("Each remaining player puts a card facedown on the table");
             }
         }
     } 
@@ -183,13 +189,13 @@ switch(commandLineArguments.length){
         game.play(4, 13, 2);
         break;
     case 1:
-        game.play(commandLineArguments[0], 13, 2);
+        game.play(Number(commandLineArguments[0]), 13, 2);
         break;
     case 2:
-        game.play(commandLineArguments[0], commandLineArguments[1], 2);
+        game.play(Number(commandLineArguments[0]), Number(commandLineArguments[1]), 2);
         break;
     default:
-        game.play(commandLineArguments[0], commandLineArguments[1], commandLineArguments[2]);
+        game.play(Number(commandLineArguments[0]), Number(commandLineArguments[1]), Number(commandLineArguments[2]));
         break;
 }
 
