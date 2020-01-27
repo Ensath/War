@@ -124,7 +124,7 @@ class War
             for(let i = 0; i < numberOfPlayers; i++){
                 // Check if the player has all the cards - if so, end the game and declare them the winner
                 if(playerDecks[i].deckOrder.length === numberOfCardsInPlayerDecks){
-                    console.log("Player", i, "is the winner!");
+                    console.log("Player", i + 1, "is the winner!");
                     return;
                 }
                 // Check if the player has run out of cards - if so, ignore them
@@ -141,7 +141,7 @@ class War
                 cardsOnTable.deckOrder.push(revealedCard);
                 cardsToCompare.push(revealedCard);
                 playersComparing.push(i);
-                console.log("Player", i, "reveals the", revealedCard.getName());
+                console.log("Player", i + 1, "reveals the", revealedCard.getName());
             }
             // Find out if there is a single highest card
             let maxCardRank = 0;
@@ -168,7 +168,7 @@ class War
                 while(cardsOnTable.deckOrder.length > 0){
                     playerDecks[winningPlayer].deckOrder.unshift(cardsOnTable.deal());
                 }
-                console.log("Player", winningPlayer, "takes the cards on the table");
+                console.log("Player", winningPlayer + 1, "takes the cards on the table");
             }
             // If not, have the players set aside a card, then reveal another card until there is a single highest card
             else {
@@ -179,7 +179,7 @@ class War
                     }
                     let hiddenCard = playerDecks[i].deal();
                     cardsOnTable.deckOrder.push(hiddenCard);
-                    console.log("Player", i, "puts a card facedown on the table");
+                    console.log("Player", i + 1, "puts a card facedown on the table");
                 }
             }
         }
