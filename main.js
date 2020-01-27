@@ -100,9 +100,26 @@ class Deck
     }
 } 
 
+// Code for prompting user input based on mpen's answer at https://stackoverflow.com/questions/18193953/waiting-for-user-to-enter-input-in-node-js
+const readline = require('readline');
+
+function waitForUserInput() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise(resolve => rl.question('', ans => {
+        rl.close();
+        resolve(ans);
+    }))
+}
+
+let userInputPrompts = false;
+
 class War 
 { 
-    play(numberOfSuits, numberOfRanks, numberOfPlayers) 
+    async play(numberOfSuits, numberOfRanks, numberOfPlayers) 
     { 
         // Initialize the decks for each player
         let wholeDeck = new Deck();
@@ -182,12 +199,19 @@ class War
                     console.log("Player", i + 1, "puts a card facedown on the table");
                 }
             }
+            if(userInputPrompts){
+                await waitForUserInput();
+            }
         }
     } 
 } 
 
 let game = new War();
 let commandLineArguments = process.argv.slice(2);
+if(commandLineArguments.includes('userinput')){
+    userInputPrompts = true;
+    commandLineArguments.splice(commandLineArguments.indexOf('userinput'), 1);
+}
 switch(commandLineArguments.length){
     case 0:
         game.play(4, 13, 2);

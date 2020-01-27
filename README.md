@@ -8,6 +8,12 @@ You may additionally specify the number of suits, number of ranks, and number of
 
 node main.js 2 12 3
 
+By default, the game runs automatically. If you wish to have the game progress only when the user hits enter, add "userinput" as a command line argument. For example, to a standard 52 card game with user input required to progress, any of the following would work:
+
+node main.js userinput
+node main.js 4 13 2 userinput
+node main.js userinput 4 13 2
+
 To run unit tests, make sure npm (Node package manager) and mocha (a JavaScript test framework) are installed, then run the following command:
 
 npm test
