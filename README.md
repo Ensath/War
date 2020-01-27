@@ -4,7 +4,11 @@ Running this application will produce the game of war. To run, make sure Node.js
 
 node main.js
 
-To run unit tests, make sure npm (Node package manager) is installed, then run the following command:
+You may additionally specify the number of suits, number of ranks, and number of players for the game as command line arguments. By default, the game will use 4 suits, 13 ranks, and 2 players. As an example, if you wanted to play a game with 2 suits, 12 ranks, and 3 players, you would use the following command:
+
+node main.js 2 12 3
+
+To run unit tests, make sure npm (Node package manager) and mocha (a JavaScript test framework) are installed, then run the following command:
 
 npm test
 
