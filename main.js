@@ -158,7 +158,7 @@ class War
                 while(cardsOnTable.deckOrder.length > 0){
                     playerDecks[winningPlayer].deckOrder.unshift(cardsOnTable.deal());
                 }
-                console.log("Player", winningPlayer, "takes the cards on the table")
+                console.log("Player", winningPlayer, "takes the cards on the table");
             }
             // If not, have the players set aside a card, then reveal another card until there is a single highest card
             else {
@@ -170,6 +170,7 @@ class War
                     let hiddenCard = playerDecks[i].deal();
                     cardsOnTable.deckOrder.push(hiddenCard);
                 }
+                console.log("Each remaining player puts a card facedown on the table");
             }
         }
     } 
