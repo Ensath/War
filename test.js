@@ -1,8 +1,8 @@
 const main = require('./main.js');
 const assert = require('assert');
 
-it('Basic logic test', () => {
-  assert.equal(true, true);
+it('Game finished', () => {
+    assert.equal(true, true);
 });
 
 // Initilize a standard 52 card deck
