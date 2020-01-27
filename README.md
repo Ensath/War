@@ -14,7 +14,7 @@ node main.js userinput
 node main.js 4 13 2 userinput
 node main.js userinput 4 13 2
 
-To run unit tests, make sure npm (Node package manager) and mocha (a JavaScript test framework) are installed, then run the following command:
+To run unit tests, make sure npm (Node package manager) and Mocha (a JavaScript test framework) are installed, then run the following command:
 
 npm test
 
