@@ -1,7 +1,7 @@
 const main = require('./main.js');
 const assert = require('assert');
 
-it('Game finished', () => {
+it('Default game finished', () => {
     assert.equal(true, true);
 });
 
