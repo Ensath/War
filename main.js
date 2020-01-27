@@ -176,7 +176,21 @@ class War
 } 
 
 let game = new War();
-game.play(4, 13, 2);
+let commandLineArguments = process.argv.slice(2);
+switch(commandLineArguments.length){
+    case 0:
+        game.play(4, 13, 2);
+        break;
+    case 1:
+        game.play(commandLineArguments[0], 13, 2);
+        break;
+    case 2:
+        game.play(commandLineArguments[0], commandLineArguments[1], 2);
+        break;
+    default:
+        game.play(commandLineArguments[0], commandLineArguments[1], commandLineArguments[2]);
+        break;
+}
 
 let standardDeck = new Deck();
 module.exports = {standardDeck};
